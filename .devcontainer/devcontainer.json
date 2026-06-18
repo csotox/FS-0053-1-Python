@@ -1,6 +1,6 @@
 {
   "name": "fs-0053-1-dev",
- "build": {
+  "build": {
     "dockerfile": "Dockerfile",
     "context": ".."
   },
@@ -12,18 +12,18 @@
         "python.defaultInterpreterPath": "/usr/local/bin/python",
         "terminal.integrated.defaultProfile.linux": "bash",
         "python.analysis.typeCheckingMode": "basic",
-
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
           "source.fixAll": "explicit",
           "source.organizeImports": "explicit"
         },
-
         "python.testing.pytestEnabled": true,
         "python.testing.unittestEnabled": false,
-        "python.testing.pytestArgs": ["tests"],
-
-        "ruff.enable": true
+        "python.testing.pytestArgs": [
+          "tests"
+        ],
+        "ruff.enable": false,
+        "ruff.fixOnSave": false
       },
       "extensions": [
         "ms-python.python",
@@ -35,7 +35,10 @@
       ]
     }
   },
-  "runArgs": ["--name", "fs-0053-1-dev"],
+  "runArgs": [
+    "--name",
+    "fs-0053-1-dev"
+  ],
   "postCreateCommand": "mkdir -p /app/src /app/tests && python --version && pip --version",
   "remoteUser": "root"
 }
