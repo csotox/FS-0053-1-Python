@@ -29,9 +29,7 @@
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-python.debugpy",
-        "charliermarsh.ruff",
-        "mhutchie.git-graph",
-        "eamodio.gitlens"
+        "charliermarsh.ruff"
       ]
     }
   },
