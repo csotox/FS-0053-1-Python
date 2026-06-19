@@ -18,10 +18,9 @@
 
 ### Flujo de trabajo diario
 
-- [ ] Crear una nueva rama en el repositorio local
-- [ ] Actualizar rama remota
-- [ ] Crear un PR
-- [ ] Trabajar en los ejercicios de la clase
-- [ ] Actualizar remoto
+- [X] Crear una nueva rama en el repositorio local
+- [X] Trabajar en los ejercicios de la clase
+- [X] Actualizar remoto
+- [X] Crear un PR
 - [ ] Hacer `merge` del PR
 - [ ] Actualizar repo local
