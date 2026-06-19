@@ -1,4 +1,4 @@
 
 ejecutar:
 	clear
-	python src/p01-inicios.py
+	python src/p02-estructura-datos.py
