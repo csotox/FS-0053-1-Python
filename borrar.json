@@ -1,0 +1,16 @@
+{
+    "status": "ok",
+    "mensaje": "Lista de estudiantes",
+    "data": [
+        {
+            "nombre": "Carlos",
+            "edad": 35,
+            "curso": "Python"
+        },
+        {
+            "nombre": "Luis",
+            "edad": 30,
+            "curso": "Base de datos"
+        }
+    ]
+}
