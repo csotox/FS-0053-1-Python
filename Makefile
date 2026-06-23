@@ -1,7 +1,7 @@
 
 ejecutar:
 # 	clear
-	python src/p03-sumar-dos-numeros.py
+	python src/p04-area-rectangulo.py
 
 ingresar:
 	clear
