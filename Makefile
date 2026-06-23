@@ -1,7 +1,7 @@
 
 ejecutar:
-	clear
-	python src/p02-estructura-datos.py
+# 	clear
+	python src/p03-sumar-dos-numeros.py
 
 ingresar:
 	clear
