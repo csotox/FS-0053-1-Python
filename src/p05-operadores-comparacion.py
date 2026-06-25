@@ -17,16 +17,28 @@ print("\n")
 print("Perfil del estudiante")
 print("---------------------\n")
 
-# Suponemos que esta información llega desde bbdd (PostgreSQL)
+# Suponemos que esta información llega desde BBDD (PostgreSQL)
 id = 1500
 nombre = "Camila"
 edad = 20
 promedio = 5.8
 asistencia = 82
 
-es_mayor_edad = (edad >= 18)            # Por buena práctica utilizamos paréntesis
-tiene_buen_promedio = promedio >= 5.5   # Pero no son requeridos
-cumple_asistencia = ( asistencia >= 80 )
+# Reglas de negocio
+# -----------------
+# Es buena práctica no tener los valores que representan condiciones
+# establecidas por la organización, como valores fijos en el código
+# de nuestro programa.
+# Ideal tener estos valores en la BBDD
+# Simulamos petición
+# Simular trabajar con constantes (En Python no existen)
+EDAD_MAYOR = 18
+PROMEDIO_CLASES = 5.5
+ASISTENCIA_APRUEBA = 80
+
+es_mayor_edad = (edad >= EDAD_MAYOR)                # Por buena práctica utilizamos paréntesis
+tiene_buen_promedio = promedio >= PROMEDIO_CLASES   # Pero no son requeridos
+cumple_asistencia = ( asistencia >= ASISTENCIA_APRUEBA )
 
 print( f"El estudiante: {nombre}" )
 print( f"¿Es mayor de edad? {es_mayor_edad}" )
