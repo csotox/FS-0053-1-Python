@@ -18,11 +18,23 @@ print( PASS_HASH )
 #password = input("Ingrese la clase secreta: ")
 #password = getpass.getpass("Ingrese la clase secreta: ")
 password = ""
+i = 0
 
-while not hmac.compare_digest(
-    hashlib.sha256(password.encode()).hexdigest(),
-    PASS_HASH
-):
+while True:
     password = getpass.getpass("Ingrese la clase secreta: ")
 
-print( "Clave correcta. Puede utilizar el programa" )
+    if hmac.compare_digest(
+        hashlib.sha256(password.encode()).hexdigest(),
+        PASS_HASH
+    ):
+        break
+
+    i += 1
+    if i >= 3:
+        break
+
+if i >= 3:
+    print("Intentos completados. No tiene acceso al sistema")
+    # Rutina de bloquear usuario en BBDD
+else:
+    print( "Clave correcta. Puede utilizar el programa" )
