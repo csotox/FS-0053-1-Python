@@ -16,7 +16,8 @@ print( PASS_HASH )
 # input() debido a que podemos ver la clave que
 # estamos ingresando
 #password = input("Ingrese la clase secreta: ")
-password = getpass.getpass("Ingrese la clase secreta: ")
+#password = getpass.getpass("Ingrese la clase secreta: ")
+password = ""
 
 while not hmac.compare_digest(
     hashlib.sha256(password.encode()).hexdigest(),
