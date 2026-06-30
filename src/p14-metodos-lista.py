@@ -44,3 +44,16 @@ print( lista_puntos )
 lista_puntos.insert(-1, "*")
 print( lista_puntos )
 
+print()
+print( "Método pop()" )
+print( "------------" )
+
+# Elimina un elemento de una lista
+# retorna el valor del elemento eliminado
+
+print( colores )
+
+color_eliminado = colores.pop(2)
+
+print( 'Lista', colores)
+print( f"Color eliminado: {color_eliminado}" )
