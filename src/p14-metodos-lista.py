@@ -69,10 +69,38 @@ print( "---------------" )
 
 numeros = [ 100, 400, 50, 200, 50, 300 ]
 
-numeros.remove(600)
+numeros.remove(50)
 
 print( 'Lista', numeros)
 
+print()
+print( "Método reverse() y sort()" )
+print( "-------------------------" )
+# [WARNING] Modifican la lista
 
+# Invierte el orden actual
+numeros.reverse()
+print( "Lista con orden cambiado", numeros )
+
+# Ordena una lista de ascendente
+numeros.sort()
+print( "Lista ordenada [asc]", numeros )
+
+# Ordena una lista descendente
+numeros.sort( reverse = True )
+print( "Lista ordenada [desc]", numeros )
+
+print()
+print( "Función sorted()" )
+print( "----------------" )
+# Crea una nueva lista ordenada
+# Mantiene la lista original sin cambios
+
+numeros_aux = [ 100, 400, 200, 50, 300 ]
+
+lista_ordenada = sorted( numeros_aux, reverse = True )
+
+print( "Lista original", numeros_aux )
+print( "Lista ordenada ", lista_ordenada )
 
 
