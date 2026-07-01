@@ -22,8 +22,8 @@
         "python.testing.pytestArgs": [
           "tests"
         ],
-        "ruff.enable": false,
-        "ruff.fixOnSave": false
+        "ruff.enable": true,
+        "ruff.fixOnSave": true
       },
       "extensions": [
         "ms-python.python",
