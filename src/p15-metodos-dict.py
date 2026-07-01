@@ -20,3 +20,17 @@ print( "---------------------------------------------------" )
 diccionario["llave 2"] = 18
 
 print( diccionario )
+
+print()
+print( "Eliminar elementos" )
+print( "------------------" )
+
+diccionario = {"celular": 140000, "notebook": 489990, "tablet": 120000, "cargador": 12400}
+print( "Diccionario original", diccionario )
+
+# Método pop()
+# Elimina un elemento de un dict usando la clave `key`
+# y devuelve el valor de dicho elemento
+valor_eliminado = diccionario.pop("celular")
+print( " - Eliminado 'celular", diccionario )
+print( f"Valor de 'celular' = {valor_eliminado}")
