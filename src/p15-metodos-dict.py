@@ -81,3 +81,12 @@ if "celular" not in llaves:
 
 print("Nuevo diccionario", diccionario)
 print("La variable llaves se actualiza dinámicamente", llaves)
+
+print()
+print("Método `value()`")
+print("----------------")
+
+# Comportamiento similar a keys()
+
+valores = diccionario.values()
+print(valores)
