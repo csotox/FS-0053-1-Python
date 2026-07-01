@@ -90,3 +90,19 @@ print("----------------")
 
 valores = diccionario.values()
 print(valores)
+
+print()
+print("Método `items()`")
+print("----------------")
+
+# Tiene un comportamiento similar a keys() y values()
+# Regresa una tupla
+
+lista = diccionario.items()
+print(lista)
+
+for clave, valor in diccionario.items():
+    print(f"- {clave}: {valor}")
+
+for i, item in enumerate(diccionario.items()):
+    print(f"- {i} {item[0]}: {item[1]}")
