@@ -22,17 +22,10 @@ preguntas = [
 
 respuestas = []
 
-print(preguntas[0])
-prueba = imprimir_menu()
-respuestas.append(input('> '))
-
-print(preguntas[1])
-imprimir_menu("Hola x")
-respuestas.append(input('> '))
-
-print(preguntas[2])
-imprimir_menu()
-respuestas.append(input('> '))
+for p in preguntas:
+    print(p)
+    prueba = imprimir_menu()
+    respuestas.append(input('> '))
 
 print( f"La respuesta a la pregunta 1 es: {respuestas[0]}")
 print( f"La respuesta a la pregunta 2 es: {respuestas[1]}")
