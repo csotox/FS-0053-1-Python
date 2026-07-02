@@ -1,8 +1,10 @@
 # Mostrar menú por consola
 def imprimir_menu(x: str = "Valor predeterminado") -> None:
     """
-    Muestra menú de opciones en la consola
+    Muestra menú de opciones en la consola\n
+    x = Pregunta a ser realizada
     """
+    print(x)
     print('Opciones: ')
     print('1). De acuerdo')
     print('2). En desacuerdo')
@@ -17,14 +19,13 @@ preguntas = [
     "Enunciado Pregunta 1",
     "Enunciado Pregunta 2",
     "Enunciado Pregunta 3",
-    "¿Esto es otra preguna?"
+    "¿Esto es otra pregunta?"
 ]
 
 respuestas = []
 
 for p in preguntas:
-    print(p)
-    prueba = imprimir_menu()
+    prueba = imprimir_menu(p)
     respuestas.append(input('> '))
 
 print()
