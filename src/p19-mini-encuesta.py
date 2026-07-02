@@ -3,7 +3,6 @@ def imprimir_menu(x: str = "Valor predeterminado") -> None:
     """
     Muestra menú de opciones en la consola
     """
-    print(x)
     print('Opciones: ')
     print('1). De acuerdo')
     print('2). En desacuerdo')
@@ -17,7 +16,8 @@ def imprimir_menu(x: str = "Valor predeterminado") -> None:
 preguntas = [
     "Enunciado Pregunta 1",
     "Enunciado Pregunta 2",
-    "Enunciado Pregunta 3"
+    "Enunciado Pregunta 3",
+    "¿Esto es otra preguna?"
 ]
 
 respuestas = []
@@ -27,7 +27,10 @@ for p in preguntas:
     prueba = imprimir_menu()
     respuestas.append(input('> '))
 
-print( f"La respuesta a la pregunta 1 es: {respuestas[0]}")
-print( f"La respuesta a la pregunta 2 es: {respuestas[1]}")
-print( f"La respuesta a la pregunta 3 es: {respuestas[2]}")
-print( f"El valor devuelto por la Fx es: {prueba}")
+print()
+print("Las respuestas son:")
+print("-------------------")
+for i, r in enumerate(respuestas):
+    print( f"- {preguntas[i]} es: {r}" )
+
+print( "Muchas gracias por responder la encuesta")
