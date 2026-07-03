@@ -31,11 +31,14 @@ if opcion in ("1", "2"):
     if opcion == "1":
         # Si utilizamos solo import
         # modulo+función
-        sumar.sumar(x, y)
+        resp = sumar.sumar(x, y)
+        print( f"El resultado de la suma es: {resp}")
+
     elif opcion == "2":
         # Si importamos con from
         # función
-        restar(x, y)
+        resp = restar(x, y)
+        print( f"El resultado de la resta es: {resp}")
 elif opcion == "0":
     print("Nos vemos a la próxima")
 else:

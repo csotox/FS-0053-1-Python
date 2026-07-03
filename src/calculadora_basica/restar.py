@@ -1,2 +1,5 @@
 def restar(x, y):
-    print( f"El resultado de la resta es: {x - y}")
+    # Al sacar el print() de la función y retornar
+    # el resultado de la resta, ahora la función
+    # cumple con responsabilidad unica
+    return x - y
