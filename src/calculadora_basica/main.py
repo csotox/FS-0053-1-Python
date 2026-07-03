@@ -11,35 +11,31 @@ def tomar_datos():
     y = int(input("Ingrese el segundo número: "))
     return x, y
 
+opcion = ""
+while opcion != "0":
+    print("Calculadora básica")
+    print("------------------\n")
+    print("¿Qué operación le gustaria realizar?")
+    print("1. Sumar dos números")
+    print("2. Restar dos números")
+    print("0. Salir")
 
-print("Calculadora básica")
-print("------------------\n")
-print("¿Qué operación le gustaria realizar?")
-print("1. Sumar dos números")
-print("2. Restar dos números")
-print("0. Salir")
+    opcion = input("> ")
 
-opcion = input("> ")
+    if opcion == "0":
+        print("Nos vemos a la próxima")
+        break
+    elif opcion not in ("1", "2"):
+        print("No existe la opción solicitada")
+        continue
 
-# Realizamos esta refactorización para tener un solo punto
-# de ingresos de datos del usuario.
-# Más adelante vamos a cambiar la función tomar_datos()
-# entonces debemos asegurar tener un solo punto de
-# entrada.
-if opcion in ("1", "2"):
+    # Esto esta fuera del if
     x, y = tomar_datos()
+
     if opcion == "1":
-        # Si utilizamos solo import
-        # modulo+función
         resp = sumar.sumar(x, y)
         print( f"El resultado de la suma es: {resp}")
 
     elif opcion == "2":
-        # Si importamos con from
-        # función
         resp = restar(x, y)
         print( f"El resultado de la resta es: {resp}")
-elif opcion == "0":
-    print("Nos vemos a la próxima")
-else:
-    print("No existe la opción solicitada")
