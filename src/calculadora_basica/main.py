@@ -40,7 +40,3 @@ elif opcion == "0":
     print("Nos vemos a la próxima")
 else:
     print("No existe la opción solicitada")
-
-
-
-# Tipado de int y float
