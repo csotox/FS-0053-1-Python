@@ -19,12 +19,17 @@ print("0. Salir")
 
 opcion = input("> ")
 
-if opcion == "1":
+# Realizamos esta refactorización para tener un solo punto
+# de ingresos de datos del usuario.
+# Más adelante vamos a cambiar la función tomar_datos()
+# entonces debemos asegurar tener un solo punto de
+# entrada.
+if opcion in ("1", "2"):
     x, y = tomar_datos()
-    sumar(x, y)
-elif opcion == "2":
-    x, y = tomar_datos()
-    restar(x, y)
+    if opcion == "1":
+        sumar(x, y)
+    elif opcion == "2":
+        restar(x, y)
 elif opcion == "0":
     print("Nos vemos a la próxima")
 else:
