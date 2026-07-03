@@ -1,5 +1,5 @@
-def sumar(x, y):
-    print( f"El resultado de la suma es: {x + y}")
+#      nombre_modulo
+import     sumar
 
 def restar(x, y):
     print( f"El resultado de la resta es: {x - y}")
@@ -27,7 +27,7 @@ opcion = input("> ")
 if opcion in ("1", "2"):
     x, y = tomar_datos()
     if opcion == "1":
-        sumar(x, y)
+        sumar.sumar(x, y)
     elif opcion == "2":
         restar(x, y)
 elif opcion == "0":
