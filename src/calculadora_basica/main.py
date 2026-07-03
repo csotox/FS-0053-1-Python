@@ -1,8 +1,10 @@
 #      nombre_modulo
 import     sumar
 
-def restar(x, y):
-    print( f"El resultado de la resta es: {x - y}")
+# Util cuando modulo/libreria es muy grande
+# para que ocupe menos memoria
+#     modulo            Funcion
+from  restar    import   restar
 
 def tomar_datos():
     x = int(input("Ingrese el primer número: "))
@@ -27,8 +29,12 @@ opcion = input("> ")
 if opcion in ("1", "2"):
     x, y = tomar_datos()
     if opcion == "1":
+        # Si utilizamos solo import
+        # modulo+función
         sumar.sumar(x, y)
     elif opcion == "2":
+        # Si importamos con from
+        # función
         restar(x, y)
 elif opcion == "0":
     print("Nos vemos a la próxima")
