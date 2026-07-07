@@ -132,17 +132,24 @@ def menu_eliminar_ingredientes(tipo_ingre: set):
 
     return set(lista)
 
-def tiempo():
+def tiempo(tipo_ingre):
 
-    t= 20 + (2 * len(ingredientes))
+    t = 20 + (2 * len(tipo_ingre))
     return t
 
-def pizza():
-    print("---------")
-    print(f"Su {titulo} de {masa} con {salsa} tiene: ")
-    print("---------")
-    for i in ingredientes:
+def pizza(tipo_masa, tipo_salsa, tipo_ingre):
+    print("-------------------------------------------------------")
+    print("Su pedido es:\n")
+    print(f"Su {TITULO} de {tipo_masa} con {tipo_salsa} tiene: ")
+    for i in tipo_ingre:
         print(i)
+    print()
+    print(f"Sera despachada en: {tiempo(tipo_ingre)} min")
+    print("-------------------------------------------------------")
+
+    op = input("Desea confirmar el pedido [S/N] ")
+
+    return op
 
 def menu_4():
     opp = 0
@@ -177,6 +184,7 @@ def menu_opciones(tipo_masa, tipo_salsa, tipo_ingre):
         print(f"Tipo de masa: {tipo_masa}" )
         print(f"Tipo de salsa: {tipo_salsa}" )
         print(f"Ingredientes: {tipo_ingre}" )
+        print(f"Tiempo estimado : {tiempo(tipo_ingre)} min" )
         print()
 
     print("Seleccione una opción")
@@ -213,6 +221,15 @@ def menu_principal():
             tipo_ingre = menu_ingredientes(tipo_ingre)
         elif opcion == '4':
             tipo_ingre = menu_eliminar_ingredientes(tipo_ingre)
+        elif opcion == '5':
+            op = pizza(tipo_masa, tipo_salsa, tipo_ingre)
+
+            # Se imprime la comanda
+            # Se limpian las variables
+            if op.lower() == "s":
+                tipo_masa = ''
+                tipo_salsa = ''
+                tipo_ingre = set()
 
 def main():
     menu_principal()
