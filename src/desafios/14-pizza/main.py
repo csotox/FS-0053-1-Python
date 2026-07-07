@@ -105,6 +105,34 @@ def menu_ingredientes(tipo_ingre: set):
 
     return tipo_ingre
 
+# Eliminar ingrediente
+def menu_eliminar_ingredientes(tipo_ingre: set):
+    op = ''
+    lista = list(tipo_ingre)
+    while op != '0':
+        print("Seleccione el ingrediente a eliminar")
+        for i, v in enumerate(lista):
+            print( f"{i+1}. {v}")
+        print( "0. Salir")
+
+        op = input("Ingrese opcion: ")
+
+        if op == '0':
+            break
+
+        try:
+            # UX para facilitar la selección no utilizamos
+            # el cero para eliminar el elemento.
+            # Mantenemos el cero para salir del menú
+            opcion = int(op) - 1
+            ing = lista.pop(opcion)
+        except ValueError:
+            print("Opción invalida debe seleccionar una opción del menú")
+            print("---------")
+
+    return set(lista)
+
+
 def quitar_ing():
     op = 1
     while op != 10:
@@ -198,7 +226,8 @@ def menu_opciones(tipo_masa, tipo_salsa, tipo_ingre):
     print("1. Tipo de masa")
     print("2. Tipo de salsa")
     print("3. Agregar ingredientes")
-    print("4. Cerrar pedido")
+    print("4. Eliminar ingredientes")
+    print("5. Cerrar pedido")
     print("0. Salir")
 
     opcion = input("> ")
@@ -225,7 +254,8 @@ def menu_principal():
             tipo_salsa = menu_salsa()
         elif opcion == '3':
             tipo_ingre = menu_ingredientes(tipo_ingre)
-
+        elif opcion == '4':
+            tipo_ingre = menu_eliminar_ingredientes(tipo_ingre)
 
 def main():
     menu_principal()
