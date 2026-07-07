@@ -1,22 +1,6 @@
 TITULO = "Pizza JAT"
 COLUMNAS = 30
 
-ingredientes = set()
-
-# Ingredientes
-def menu():
-    print("1. Tomate")
-    print("2. Champiñones")
-    print("3. Aceitunas")
-    print("4. Cebolla")
-    print("5. Pollo")
-    print("6. Jamón")
-    print("7. Carne")
-    print("8. Tocino")
-    print("9. Queso")
-    print("10. Listo!")
-
-# Refactorizado
 def menu_masa():
     print("Tipo De Masa")
     print("1. Masa tradicional")
@@ -42,7 +26,6 @@ def menu_masa():
 
     return tipo
 
-# Refactorizado
 def menu_salsa():
     salsas = {
         "1": "Salsa de tomate",
@@ -70,7 +53,6 @@ def menu_salsa():
 
     return salsa
 
-# Tipo de ingredientes
 def menu_ingredientes(tipo_ingre: set):
     lista_ingre = {
         '1': 'Tomate',
@@ -105,7 +87,6 @@ def menu_ingredientes(tipo_ingre: set):
 
     return tipo_ingre
 
-# Eliminar ingrediente
 def menu_eliminar_ingredientes(tipo_ingre: set):
     op = ''
     lista = list(tipo_ingre)
@@ -151,32 +132,6 @@ def pizza(tipo_masa, tipo_salsa, tipo_ingre):
 
     return op
 
-def menu_4():
-    opp = 0
-    while opp != 3:
-        print("---------")
-        print(f"El tiempo estimado para su pizza es de {tiempo()} min.")
-        print("---------")
-        print("¿Acepta el pedido?")
-        print("1. Ver ingredientes")
-        print("2. No")
-        print("3. Sí")
-        print("---------")
-        try:
-            opp = int(input("Su opcion: "))
-            if opp == 1:
-                pizza()
-            elif opp == 2:
-                menu_3()
-            elif opp == 3:
-                print("Su pedido se está preparando...")
-            else:
-                print("Ingrese valores del menu")
-
-        except ValueError:
-            print("Ingrese solo numeros")
-    return TITULO
-
 def menu_opciones(tipo_masa, tipo_salsa, tipo_ingre):
 
     if tipo_masa != '' or tipo_salsa != '' :
@@ -199,13 +154,13 @@ def menu_opciones(tipo_masa, tipo_salsa, tipo_ingre):
 
     return opcion
 
+def inicializar():
+    return '', '', set()
 
 def menu_principal():
 
     opcion = ''
-    tipo_masa = ''
-    tipo_salsa = ''
-    tipo_ingre = set()
+    tipo_masa, tipo_salsa, tipo_ingre = inicializar()
     while opcion != '0':
         print( f"{'Bienvenidos/as':^{COLUMNAS}}" )
         print(f"{TITULO:^{COLUMNAS}}")
@@ -227,9 +182,7 @@ def menu_principal():
             # Se imprime la comanda
             # Se limpian las variables
             if op.lower() == "s":
-                tipo_masa = ''
-                tipo_salsa = ''
-                tipo_ingre = set()
+                tipo_masa, tipo_salsa, tipo_ingre = inicializar()
 
 def main():
     menu_principal()
