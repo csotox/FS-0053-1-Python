@@ -71,50 +71,39 @@ def menu_salsa():
     return salsa
 
 # Tipo de ingredientes
-def menu_3():
-    op3 = 1
-    while op3 != 10:
-        print("Tipo De Ingredientes")
-        menu()
-        print("11. Quitar ingredientes")
-        print("12. Cambiar masa")
-        print("13. Cambiar salsa")
-        print("---------")
-        try:
-            op3 = int(input("Su opcion: "))
-            if op3 == 1:
-                ingredientes.add("Tomate")   
-            elif op3 == 2:
-                ingredientes.add("Champiñones")
-            elif op3 == 3:
-                ingredientes.add("Aceitunas") 
-            elif op3 == 4:
-                ingredientes.add("Cebolla")
-            elif op3 == 5:
-                ingredientes.add("Pollo")
-            elif op3 == 6:
-                ingredientes.add("Jamón")
-            elif op3 == 7:
-                ingredientes.add("Carne")
-            elif op3 == 8:
-                ingredientes.add("Tocino")
-            elif op3 == 9:
-                ingredientes.add("Queso")
-            elif op3 == 10:
-                print("Guardando ingredientes...") 
-                print("---------")
-            elif op3 == 11:
-                quitar_ing()
-            elif op3 == 12:
-                menu_1()
-            elif op3 == 13:
-                menu_2()
-            else:
-                print("Ingrese valores del menu")
+def menu_ingredientes(tipo_ingre: set):
+    lista_ingre = {
+        '1': 'Tomate',
+        '2': 'Champiñones',
+        '3': 'Aceitunas',
+        '4': 'Cebolla',
+        '5': 'Pollo',
+        '6': 'Jamón',
+        '7': 'Carne',
+        '8': 'Tocino',
+        '9': 'Queso'
+    }
 
-        except ValueError:
-            print("Ingrese solo numeros")
-    return titulo
+    op3 = ''
+    while op3 != '0':
+        print("Tipo de ingredientes")
+        for c, v in lista_ingre.items():
+            print( f"{c}. {v}")
+        print( "0. Salir")
+
+        op3 = input("Ingrese opcion: ")
+        ing = lista_ingre.get(op3, None)
+
+        if ing:
+            tipo_ingre.add(ing)
+            continue
+        elif op3 == '0':
+            break
+        else:
+            print("Opcion invalida debe seleccionar una opción del menú")
+            print("---------")
+
+    return tipo_ingre
 
 def quitar_ing():
     op = 1
@@ -196,12 +185,13 @@ def menu_4():
             print("Ingrese solo numeros")
     return TITULO
 
-def menu_opciones(tipo_masa, tipo_salsa):
+def menu_opciones(tipo_masa, tipo_salsa, tipo_ingre):
 
     if tipo_masa != '' or tipo_salsa != '' :
         print("Ingredientes seleccionados")
         print(f"Tipo de masa: {tipo_masa}" )
         print(f"Tipo de salsa: {tipo_salsa}" )
+        print(f"Ingredientes: {tipo_ingre}" )
         print()
 
     print("Seleccione una opción")
@@ -221,32 +211,21 @@ def menu_principal():
     opcion = ''
     tipo_masa = ''
     tipo_salsa = ''
+    tipo_ingre = set()
     while opcion != '0':
         print( f"{'Bienvenidos/as':^{COLUMNAS}}" )
         print(f"{TITULO:^{COLUMNAS}}")
         print("=" * COLUMNAS, "\n")
 
-        opcion = menu_opciones(tipo_masa, tipo_salsa)
+        opcion = menu_opciones(tipo_masa, tipo_salsa, tipo_ingre)
 
         if opcion == '1':
             tipo_masa = menu_masa()
         elif opcion == '2':
             tipo_salsa = menu_salsa()
+        elif opcion == '3':
+            tipo_ingre = menu_ingredientes(tipo_ingre)
 
-    # print("Haga su propia pizza")
-    # print("---------")
-    # # Tipo de masa
-    # print(menu_1())
-    # print("---------")
-    # # Tipo De Salsa
-    # print(menu_2())
-    # print("---------")
-    # # Tipo de ingredientes
-    # print(menu_3())
-    # print("---------")
-    # # Cierre de pedido
-    # print(menu_4())
-    # print("---------")
 
 def main():
     menu_principal()
