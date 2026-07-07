@@ -132,49 +132,6 @@ def menu_eliminar_ingredientes(tipo_ingre: set):
 
     return set(lista)
 
-
-def quitar_ing():
-    op = 1
-    while op != 10:
-        print("---------")
-        print("Los ingredientes de su pizza son :")
-        print("---------")
-        for i in ingredientes:
-            print(i)
-        print("---------")
-        print("¿Que ingredientes desea eliminar?")
-        print("---------")
-        menu()
-        print("---------")
-        try:
-            op = int(input("Su opcion: "))
-            if op == 1:
-                ingredientes.discard("Tomate")   
-            elif op == 2:
-                ingredientes.discard("Champiñones")
-            elif op == 3:
-                ingredientes.discard("Aceitunas") 
-            elif op == 4:
-                ingredientes.discard("Cebolla")
-            elif op == 5:
-                ingredientes.discard("Pollo")
-            elif op == 6:
-                ingredientes.discard("Jamón")
-            elif op == 7:
-                ingredientes.discard("Carne")
-            elif op == 8:
-                ingredientes.discard("Tocino")
-            elif op == 9:
-                ingredientes.discard("Queso")
-            elif op == 10:
-                print("Volviendo a seleccion de ingredientes...")
-                print("---------") 
-            else:
-                print("Ingrese valores del menu")
-
-        except ValueError:
-            print("Ingrese solo numeros")  
-
 def tiempo():
 
     t= 20 + (2 * len(ingredientes))
