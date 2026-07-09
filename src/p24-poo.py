@@ -8,7 +8,7 @@ def main():
 
     medicamento_nuevo.asignar_precio(precio)
 
-    print( f"Precio nuevo {medicamento_nuevo.precio}" )
+    print( f"Precio nuevo {medicamento_nuevo.precio} y descuento {medicamento_nuevo.descuento}" )
 
 
 if __name__ == '__main__':
