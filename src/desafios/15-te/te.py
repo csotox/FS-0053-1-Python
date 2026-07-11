@@ -32,3 +32,37 @@ class Te:
             return 5_000
         else:
             return None
+
+# Otra manera de trabajar los sabores y los formatos
+# más parecida a cuando recibamos desde la bbdd
+"""
+    @staticmethod
+    def obtener_sabores() -> dict:
+        return {
+            '1': {
+                    'nombre:': "Té negro",
+                    'tiempo': '3',
+                    'tipo_tiempo': 'min',
+                    'nota': "Se recomienda consumir al desayuno"
+                },
+            '2': {
+                    'nombre:': "Té verde",
+                    'tiempo': '5',
+                    'tipo_tiempo': 'min',
+                    'nota': "Se recomienda consumir al medio día"
+                },
+            '3': {
+                    'nombre:': "Agua de hierbas",
+                    'tiempo': '6',
+                    'tipo_tiempo': 'min',
+                    'nota': "Se recomienda consumir al atardecer"
+                }
+        }
+
+    @staticmethod
+    def obtener_formato() -> dict:
+        return {
+                '1': '300gr',
+                '2': '500gr'
+            }
+"""
