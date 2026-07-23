@@ -124,6 +124,13 @@ class Automovil:
         else:
             return False
 
+    # Ejemplo de polimorfismo
+    # el método mover() se comporta diferente según la clase que lo invoque
+    def mover(self):
+        if self.__encendido and self.__velocidad > 0:
+            print("El auto se está moviendo")
+        else:
+            print("El auto está apagado o esta detenido")
 
 class AutoElectrico(Automovil):
     def __init__(self, marca: str = "NA", modelo: str = "NA", color: str = "NA", autonomia: int = 0):
@@ -135,6 +142,10 @@ class AutoElectrico(Automovil):
     def mostrar_info(self):
         super().mostrar_info()
         print(f"Autonomía: {self.autonomia} km")
+
+    # Sobre escritura de métodos
+    def mover(self):
+        print("hola")
 
 
 # -- - ---------------------------------------------------------
@@ -245,5 +256,6 @@ class AutoElectrico(Automovil):
 # -- - Herencia
 
 tesla_s = AutoElectrico("Tesla", "Model S", "Negro", 500)
+tesla_s.encender()
 tesla_s.acelerar(10)
-tesla_s.mostrar_info()
+tesla_s.mover()
