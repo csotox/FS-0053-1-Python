@@ -33,6 +33,7 @@ class Automovil:
         self.marca = marca
         self.modelo = modelo
         self.color = color
+        self.__patente = "NA"
         # atributos de estado
         self.__encendido = False
         self.__velocidad = 0
@@ -99,6 +100,29 @@ class Automovil:
             print(f"El auto aceleró a {self.__velocidad} km/h")
         else:
             print("El auto está apagado, no puede acelerar")
+
+    # Método estatico
+    @staticmethod
+    def mostrar_mensaje():
+        print("Este es un método estático, no necesita una instancia de la clase para ser invocado")
+
+    # Validación de patente
+    # Ejemplo de Getters y Setters, y métodos estáticos
+    @property
+    def patente(self):
+        return self.__patente
+
+    @patente.setter
+    def patente(self, patente: str):
+        if self.validar_patente(patente):
+            self.__patente = patente
+
+    @staticmethod
+    def validar_patente(patente: str):
+        if len(patente) == 6:
+            return True
+        else:
+            return False
 
 
 
@@ -190,4 +214,18 @@ a3 = Automovil("Ford", "Focus", "Blanco")
 print(f"Se han creado {i} autos")
 
 print(f"Se han creado {Automovil.cantidad_autos} autos (Métodos de clase)")
+
+print()
+Automovil.mostrar_mensaje()
+
+# Métodos estáticos
+# Validar patente
+print()
+print( f"Patente actual: {a1.patente}" )
+a1.patente = "ABC123"    ## Asignamos la nueva patente
+print( f"Nueva patente: {a1.patente}" )
+
+print( f"Patente actual: {a2.patente}" )
+a2.patente = "DE6"    ## Asignamos la nueva patente
+print( f"Nueva patente: {a2.patente}" )
 
