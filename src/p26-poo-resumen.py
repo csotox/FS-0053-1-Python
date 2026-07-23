@@ -125,12 +125,23 @@ class Automovil:
             return False
 
 
+class AutoElectrico(Automovil):
+    def __init__(self, marca: str = "NA", modelo: str = "NA", color: str = "NA", autonomia: int = 0):
+        # super() nos permite invocar al constructor de la clase padre
+        # Entonces se ejecuta primero el constructor padre y luego el constructor de la clase hija
+        super().__init__(marca, modelo, color)
+        self.autonomia = autonomia
+
+    def mostrar_info(self):
+        super().mostrar_info()
+        print(f"Autonomía: {self.autonomia} km")
+
 
 # -- - ---------------------------------------------------------
 # Objeto / Instancia
-auto_1 = Automovil("Toyota", "Corolla", "Rojo")
-auto_2 = Automovil()      # Los argumentos del constructor son opcionales y tienen valores por defecto
-auto_3 = Automovil(modelo="Civic", marca="Honda", color="Azul")
+# auto_1 = Automovil("Toyota", "Corolla", "Rojo")
+# auto_2 = Automovil()      # Los argumentos del constructor son opcionales y tienen valores por defecto
+# auto_3 = Automovil(modelo="Civic", marca="Honda", color="Azul")
 
 # print( type(1) )
 # print( type(auto_1) )
@@ -202,30 +213,37 @@ auto_3 = Automovil(modelo="Civic", marca="Honda", color="Azul")
 # Queremos contar el número de autos creados
 # 33%
 
-i = 1
-a1 = Automovil("Toyota", "Corolla", "Rojo")
+# i = 1
+# a1 = Automovil("Toyota", "Corolla", "Rojo")
 
-i += 1
-a2 = Automovil("Honda", "Civic", "Azul")
+# i += 1
+# a2 = Automovil("Honda", "Civic", "Azul")
 
-i += 1
-a3 = Automovil("Ford", "Focus", "Blanco")
+# i += 1
+# a3 = Automovil("Ford", "Focus", "Blanco")
 
-print(f"Se han creado {i} autos")
+# print(f"Se han creado {i} autos")
 
-print(f"Se han creado {Automovil.cantidad_autos} autos (Métodos de clase)")
+# print(f"Se han creado {Automovil.cantidad_autos} autos (Métodos de clase)")
 
-print()
-Automovil.mostrar_mensaje()
+# print()
+# Automovil.mostrar_mensaje()
 
-# Métodos estáticos
-# Validar patente
-print()
-print( f"Patente actual: {a1.patente}" )
-a1.patente = "ABC123"    ## Asignamos la nueva patente
-print( f"Nueva patente: {a1.patente}" )
+# # Métodos estáticos
+# # Validar patente
+# print()
+# print( f"Patente actual: {a1.patente}" )
+# a1.patente = "ABC123"    ## Asignamos la nueva patente
+# print( f"Nueva patente: {a1.patente}" )
 
-print( f"Patente actual: {a2.patente}" )
-a2.patente = "DE6"    ## Asignamos la nueva patente
-print( f"Nueva patente: {a2.patente}" )
+# print( f"Patente actual: {a2.patente}" )
+# a2.patente = "DE6"    ## Asignamos la nueva patente
+# print( f"Nueva patente: {a2.patente}" )
 
+
+# -- - ---------------------------------------------------------
+# -- - Herencia
+
+tesla_s = AutoElectrico("Tesla", "Model S", "Negro", 500)
+tesla_s.acelerar(10)
+tesla_s.mostrar_info()
