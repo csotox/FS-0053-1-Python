@@ -20,6 +20,8 @@ Acciones/comportamiento:
 - Mostrar info
 """
 
+from abc import ABC, abstractmethod
+
 
 # Clase - Receta/Plantilla
 class Automovil:
@@ -126,11 +128,16 @@ class Automovil:
 
     # Ejemplo de polimorfismo
     # el método mover() se comporta diferente según la clase que lo invoque
+    # def mover(self):
+    #     if self.__encendido and self.__velocidad > 0:
+    #         print("El auto se está moviendo")
+    #     else:
+    #         print("El auto está apagado o esta detenido")
+
+    # Abstracción
+    @abstractmethod
     def mover(self):
-        if self.__encendido and self.__velocidad > 0:
-            print("El auto se está moviendo")
-        else:
-            print("El auto está apagado o esta detenido")
+        ...
 
 class AutoElectrico(Automovil):
     def __init__(self, marca: str = "NA", modelo: str = "NA", color: str = "NA", autonomia: int = 0):
