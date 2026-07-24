@@ -57,13 +57,27 @@
 
 # Evitamos que si el usuario ingresa un valor no válido,
 # el programa se rompa
+# try:
+#     numero = int(input("Ingrese un número: "))
+#     print(f"El número ingresado es: {numero}")
+# except ValueError:
+#     # registrar log
+#     print("Error: Debe ingresar un número entero válido.")
+
+# -- -----------------------------------
+# -- Excepciones | Captura múltiple
+# -- -----------------------------------
+
 try:
-    numero = int(input("Ingrese un número: "))
-    print(f"El número ingresado es: {numero}")
+    edad = int(input("Ingrese su edad:"))
+    divisor = int(input("Ingrese número para dividir su edad:"))
+
+    print(edad / divisor)
 except ValueError:
-    # registrar log
-    print("Error: Debe ingresar un número entero válido.")
-
-
+    print("Error: E1518-45-20")
+except ZeroDivisionError:
+    print("Error [E1518-45-21]: No se puede dividir por cero.")
+except Exception as e:
+    print(f"Error: {e}")
 
 
