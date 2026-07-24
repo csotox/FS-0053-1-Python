@@ -113,13 +113,19 @@ while True:
             raise Exception("Edad debe ser un N° positivo (Excepcion).")
             # print("Edad debe ser un N° positivo.")
 
-        divisor = int(input("Ingrese número para dividir su edad: "))
+        while True:
+            try:
+                divisor = int(input("Ingrese número para dividir su edad: "))
 
-        div = edad / divisor
+                div = edad / divisor
+            except ValueError:
+                print("Debe ingresar un número")
+            except ZeroDivisionError:
+                print("El N° por el cual desea dividir no puede ser cero")
+            else:
+                break
     except ValueError:
         print("Debe ingresar un número")
-    except ZeroDivisionError:
-        print("El N° por el cual desea dividir no puede ser cero")
     except Exception as e:
         print(f"ERROR: {e}")
     else:
