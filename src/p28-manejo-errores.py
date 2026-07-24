@@ -38,7 +38,31 @@
 
 # print(f"El precio de venta es: {precio_venta:,}")
 
+# -- -----------------------------------
+# -- Excepciones
+# -- -----------------------------------
+# Una excepción es un evento de error que ocurre durante
+# la ejecución de un programa y que interrumpe el flujo
+# normal del código
 
+# Al usuario le damos la mínima posibilidad de que
+# rompa el programa
+# -- -
+# Caso de uso 1:
+# El usuario tiene la posibilidad de ingresar uno
+# Eso rompe el sistema
+
+# numero = int( input("Ingrese un número: ") )
+# print( f"El número ingresado es: {numero}" )
+
+# Evitamos que si el usuario ingresa un valor no válido,
+# el programa se rompa
+try:
+    numero = int(input("Ingrese un número: "))
+    print(f"El número ingresado es: {numero}")
+except ValueError:
+    # registrar log
+    print("Error: Debe ingresar un número entero válido.")
 
 
 
