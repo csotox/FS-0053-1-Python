@@ -106,29 +106,56 @@
 # -- Excepciones | Uso de else / Finally
 # -- -------------------------------------
 
-while True:
-    try:
-        edad = int(input("Ingrese su edad: "))
-        if edad < 0:
-            raise Exception("Edad debe ser un N° positivo (Excepcion).")
-            # print("Edad debe ser un N° positivo.")
+# while True:
+#     try:
+#         edad = int(input("Ingrese su edad: "))
+#         if edad < 0:
+#             raise Exception("Edad debe ser un N° positivo (Excepcion).")
+#             # print("Edad debe ser un N° positivo.")
 
-        while True:
-            try:
-                divisor = int(input("Ingrese número para dividir su edad: "))
+#         while True:
+#             try:
+#                 divisor = int(input("Ingrese número para dividir su edad: "))
 
-                div = edad / divisor
-            except ValueError:
-                print("Debe ingresar un número")
-            except ZeroDivisionError:
-                print("El N° por el cual desea dividir no puede ser cero")
-            else:
-                break
-    except ValueError:
-        print("Debe ingresar un número")
-    except Exception as e:
-        print(f"ERROR: {e}")
+#                 div = edad / divisor
+#             except ValueError:
+#                 print("Debe ingresar un número")
+#             except ZeroDivisionError:
+#                 print("El N° por el cual desea dividir no puede ser cero")
+#             else:
+#                 break
+#     except ValueError:
+#         print("Debe ingresar un número")
+#     except Exception as e:
+#         print(f"ERROR: {e}")
+#     else:
+#         print(div)
+#         break
+
+
+# -- ----------------------------
+# -- Excepciones | Personalizada
+# -- ----------------------------
+
+class SaldoInsuficienteError(Exception):
+    ...
+
+def retirar_dinero(saldo, retirar):
+    if retirar > saldo:
+        raise SaldoInsuficienteError(f"Su saldo es {saldo:,} y desea retirar {retirar:,}.")
     else:
-        print(div)
-        break
+        saldo -= retirar
+        return saldo
+
+#-- ----------------------------
+saldo = 8_000
+retirar = 10_000
+
+try:
+    saldo = retirar_dinero(saldo, retirar)
+except SaldoInsuficienteError as e:
+    print(f"ERROR de Saldo Insuficiente: {e}")
+
+print(f"Saldo actual: {saldo:,}")
+
 
