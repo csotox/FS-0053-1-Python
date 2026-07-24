@@ -84,20 +84,45 @@
 # -- Excepciones | Uso de else / Finally
 # -- -------------------------------------
 
-try:
-    edad = int(input("Ingrese su edad:"))
-    divisor = int(input("Ingrese número para dividir su edad:"))
+# try:
+#     edad = int(input("Ingrese su edad:"))
+#     divisor = int(input("Ingrese número para dividir su edad:"))
 
-    print(edad / divisor)
-except ValueError:
-    print("Error: E1518-45-20")
-except ZeroDivisionError:
-    print("Error [E1518-45-21]: No se puede dividir por cero.")
-except Exception as e:
-    print(f"Error: {e}")
-else:
-    # Se ejecuta unicamente si no ocurre ninguna excepción
-    print("La operación se realizó correctamente.")
-finally:
-    # Se ejecuta siempre, haya ocurrido o no una excepción
-    print("Fin del programa.")
+#     print(edad / divisor)
+# except ValueError:
+#     print("Error: E1518-45-20")
+# except ZeroDivisionError:
+#     print("Error [E1518-45-21]: No se puede dividir por cero.")
+# except Exception as e:
+#     print(f"Error: {e}")
+# else:
+#     # Se ejecuta unicamente si no ocurre ninguna excepción
+#     print("La operación se realizó correctamente.")
+# finally:
+#     # Se ejecuta siempre, haya ocurrido o no una excepción
+#     print("Fin del programa.")
+
+# -- -------------------------------------
+# -- Excepciones | Uso de else / Finally
+# -- -------------------------------------
+
+while True:
+    try:
+        edad = int(input("Ingrese su edad: "))
+        if edad < 0:
+            raise Exception("Edad debe ser un N° positivo (Excepcion).")
+            # print("Edad debe ser un N° positivo.")
+
+        divisor = int(input("Ingrese número para dividir su edad: "))
+
+        div = edad / divisor
+    except ValueError:
+        print("Debe ingresar un número")
+    except ZeroDivisionError:
+        print("El N° por el cual desea dividir no puede ser cero")
+    except Exception as e:
+        print(f"ERROR: {e}")
+    else:
+        print(div)
+        break
+
