@@ -9,6 +9,10 @@ def get_cursos():
 def listado_cursos(request):
     cursos = get_cursos()
 
+    print('-- -')
+    print( request.user )
+    print('-- -')
+
     context = {
         'cursos': cursos,
         'prueba': "Hola"
@@ -86,6 +90,15 @@ def editar_cursos(request, parametro_uuid):
         'cursos/editar.html',
         context
     )
+
+# Login
+def iniciar_sesion(request):
+
+    return render(
+        request,
+        'cursos/login.html',
+    )
+
 
 
 """
