@@ -127,6 +127,12 @@ def iniciar_sesion(request):
         'cursos/login.html',
     )
 
+# Logout
+def cerrar_sesion(request):
+    if request.method == 'POST':
+        logout(request)
+
+    return redirect('/cursos/')
 
 
 """

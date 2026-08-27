@@ -20,8 +20,12 @@
                             {{ user.username }}
                         </span>
                     </div>
+                    <form method="post" action="logout/">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-light">Cerrar sesión</button>
+                    </form>
                 {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-outline-light">Iniciar sesión</a>
+                    <a href="login/" class="btn btn-outline-light">Iniciar sesión</a>
                 {% endif %}
             </div>
         </div>
