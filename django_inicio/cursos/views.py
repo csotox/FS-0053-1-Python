@@ -5,12 +5,14 @@ from django.contrib.auth import (
     login,
     logout
 )
+from django.contrib.auth.decorators import login_required
 
 from cursos.models import Cursos
 
 def get_cursos():
     return Cursos.objects.all()
 
+@login_required
 def listado_cursos(request):
     cursos = get_cursos()
 
@@ -29,6 +31,7 @@ def listado_cursos(request):
         context
     )
 
+@login_required
 def detalles_cursos(request, parametro_uuid):
 
     _cursos = None
@@ -48,6 +51,7 @@ def detalles_cursos(request, parametro_uuid):
         context
     )
 
+@login_required
 def crear_cursos(request):
     print( 'Crear cursos' )
 
@@ -67,6 +71,7 @@ def crear_cursos(request):
         'cursos/crear.html'
     )
 
+@login_required
 def editar_cursos(request, parametro_uuid):
 
     _cursos = None
@@ -128,6 +133,7 @@ def iniciar_sesion(request):
     )
 
 # Logout
+@login_required
 def cerrar_sesion(request):
     if request.method == 'POST':
         logout(request)
