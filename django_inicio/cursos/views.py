@@ -1,5 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import (
+    authenticate,
+    login,
+    logout
+)
 
 from cursos.models import Cursos
 
@@ -93,6 +98,29 @@ def editar_cursos(request, parametro_uuid):
 
 # Login
 def iniciar_sesion(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
+
+        usuario = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        # print( f"Usuario: {username} y contraseña {password}")
+        # print( usuario )
+
+        if usuario is not None:
+            login( request, usuario )
+
+            return redirect('/cursos/')
+        else:
+            messages.warning(
+                request,
+                "Usuario o contraseña incorrectos"
+            )
 
     return render(
         request,
