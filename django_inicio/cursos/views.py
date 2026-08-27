@@ -1,13 +1,29 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import (
+    authenticate,
+    login,
+    logout
+)
+from django.contrib.auth.decorators import (
+    login_required,
+    permission_required
+)
 
 from cursos.models import Cursos
 
 def get_cursos():
     return Cursos.objects.all()
 
+@login_required
+@permission_required('cursos.view_cursos', raise_exception=True)
 def listado_cursos(request):
     cursos = get_cursos()
+
+    print('-- -')
+    print( request.user )
+    print( request.user.has_perm('cursos.add_cursos') )
+    print('-- -')
 
     context = {
         'cursos': cursos,
@@ -20,6 +36,8 @@ def listado_cursos(request):
         context
     )
 
+@login_required
+@permission_required('cursos.view_cursos', raise_exception=True)
 def detalles_cursos(request, parametro_uuid):
 
     _cursos = None
@@ -39,6 +57,8 @@ def detalles_cursos(request, parametro_uuid):
         context
     )
 
+@login_required
+@permission_required('cursos.add_cursos', raise_exception=True)
 def crear_cursos(request):
     print( 'Crear cursos' )
 
@@ -58,6 +78,8 @@ def crear_cursos(request):
         'cursos/crear.html'
     )
 
+@login_required
+@permission_required('cursos.change_cursos', raise_exception=True)
 def editar_cursos(request, parametro_uuid):
 
     _cursos = None
@@ -86,6 +108,45 @@ def editar_cursos(request, parametro_uuid):
         'cursos/editar.html',
         context
     )
+
+# Login
+def iniciar_sesion(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
+
+        usuario = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        # print( f"Usuario: {username} y contraseña {password}")
+        # print( usuario )
+
+        if usuario is not None:
+            login( request, usuario )
+
+            return redirect('/cursos/')
+        else:
+            messages.warning(
+                request,
+                "Usuario o contraseña incorrectos"
+            )
+
+    return render(
+        request,
+        'cursos/login.html',
+    )
+
+# Logout
+@login_required
+def cerrar_sesion(request):
+    if request.method == 'POST':
+        logout(request)
+
+    return redirect('/cursos/')
 
 
 """

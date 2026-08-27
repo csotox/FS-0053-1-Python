@@ -1,0 +1,49 @@
+{% extends 'cursos/base.html' %}
+
+{% block context %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+        <p{% if message.tags %} class="alert-{{ message.tags }}"{% endif %}>{{ message.tags }} - {{ message }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="card col-8">
+    <div class="card-header text-center m-0 p-0">
+        <h1 class="card-title">Inicio de sesión</h1>
+    </div>
+
+    <div class="card-body">
+        <form method="post">
+        {% csrf_token %}
+
+            <div class="form-floating mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="usuarioLoginInput"
+                    name="username"
+                >
+                <label for="usuarioLoginInput" class="form-label">Usuario</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input
+                    type="password"
+                    class="form-control"
+                    id="passwordLoginInput"
+                    name="password"
+                >
+                <label for="passwordLoginInput" class="form-label">Contraseña</label>
+            </div>
+
+          <button type="submit" class="btn btn-primary">Inicio de sesión</button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

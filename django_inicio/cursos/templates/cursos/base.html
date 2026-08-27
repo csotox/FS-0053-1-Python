@@ -12,7 +12,24 @@
     <nav class="navbar navbar-expand-lg" style="background-color: #6610f2">
         <div class="container-fluid">
             <a class="navbar-brand" href="/cursos/">Cursos</a>
+
+            <div class="d-flex">
+                {% if user.is_authenticated %}
+                    <div class="d-flex">
+                        <span class="navbar-text text-white me-3">
+                            {{ user.username }}
+                        </span>
+                    </div>
+                    <form method="post" action="logout/">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-light">Cerrar sesión</button>
+                    </form>
+                {% else %}
+                    <a href="/cursos/login/" class="btn btn-outline-light">Iniciar sesión</a>
+                {% endif %}
+            </div>
         </div>
+
     </nav>
 
     <div class="container border-bottom">
