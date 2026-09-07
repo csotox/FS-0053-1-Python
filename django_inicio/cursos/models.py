@@ -15,6 +15,22 @@ class Cursos(models.Model):
     def __str__(self) -> str:
         return self.nombre
 
+# Modelo para clasificar cursos
+class Clasi(models.Model):
+    id = models.AutoField(primary_key=True)
+
+    uuid = models.UUIDField(
+        unique=True,
+        editable=False,
+        default=uuid.uuid4
+    )
+
+    nombre = models.CharField( max_length=50 )
+
+    def __str__(self) -> str:
+        return self.nombre
+
+
 """
 Ciclo de vida
 -------------
