@@ -10,10 +10,13 @@ from django.contrib.auth.decorators import (
     permission_required
 )
 
-from cursos.models import Cursos
+from cursos.models import Cursos, Clasi
 
 def get_cursos():
     return Cursos.objects.all()
+
+def get_clasi():
+    return Clasi.objects.all()
 
 @login_required
 @permission_required('cursos.view_cursos', raise_exception=True)
@@ -147,6 +150,20 @@ def cerrar_sesion(request):
         logout(request)
 
     return redirect('/cursos/')
+
+@login_required
+def listado_clasi(request):
+    clasi = get_clasi()
+
+    context = {
+        'cursos': clasi
+    }
+
+    return render(
+        request,
+        'cursos/clasi/index.html',
+        context
+    )
 
 
 """
