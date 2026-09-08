@@ -10,10 +10,13 @@ from django.contrib.auth.decorators import (
     permission_required
 )
 
-from cursos.models import Cursos
+from cursos.models import Cursos, Clasi
 
 def get_cursos():
     return Cursos.objects.all()
+
+def get_clasi():
+    return Clasi.objects.all()
 
 @login_required
 @permission_required('cursos.view_cursos', raise_exception=True)
@@ -147,6 +150,40 @@ def cerrar_sesion(request):
         logout(request)
 
     return redirect('/cursos/')
+
+@login_required
+def listado_clasi(request):
+    clasi = get_clasi()
+
+    context = {
+        'clasi': clasi
+    }
+
+    return render(
+        request,
+        'cursos/clasi/index.html',
+        context
+    )
+
+@login_required
+def crear_clasi(request):
+    print( 'Crear clasificación' )
+
+    if request.method == 'POST':
+        nombre_clasi = request.POST.get('nombre_clasi', None)
+
+        Clasi.objects.create(
+            nombre = nombre_clasi,
+        )
+
+        messages.success(request, "Clasificación creada.")
+
+        return redirect('/cursos/clasi/')
+
+    return render(
+        request,
+        'cursos/clasi/crear.html'
+    )
 
 
 """
