@@ -18,5 +18,5 @@ urlpatterns = [
     path('crear/', crear_cursos),
     path('<uuid:parametro_uuid>/', detalles_cursos),
     path('<uuid:parametro_uuid>/editar/', editar_cursos),
-    path('clasi/', listado_clasi),
+    path('clasificacion/', listado_clasi, name="curso_clasi_index"),
 ]
