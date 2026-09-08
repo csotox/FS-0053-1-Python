@@ -156,13 +156,33 @@ def listado_clasi(request):
     clasi = get_clasi()
 
     context = {
-        'cursos': clasi
+        'clasi': clasi
     }
 
     return render(
         request,
         'cursos/clasi/index.html',
         context
+    )
+
+@login_required
+def crear_clasi(request):
+    print( 'Crear clasificación' )
+
+    if request.method == 'POST':
+        nombre_clasi = request.POST.get('nombre_clasi', None)
+
+        Clasi.objects.create(
+            nombre = nombre_clasi,
+        )
+
+        messages.success(request, "Clasificación creada.")
+
+        return redirect('/cursos/clasi/')
+
+    return render(
+        request,
+        'cursos/clasi/crear.html'
     )
 
 
