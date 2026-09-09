@@ -68,6 +68,15 @@
         });
     </script>
 
+    <script>
+    $('#modalAsignarClasificacion').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget);
+        const url = button.data('url');
+
+        $('#formAsignarClasificacion').attr('action', url);
+    });
+    </script>
+
 </body>
 </html>
 

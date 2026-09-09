@@ -1,19 +1,6 @@
 import uuid
 from django.db import models
-
-class Cursos(models.Model):
-    id = models.AutoField(primary_key=True)
-
-    uuid = models.UUIDField(
-        unique=True,
-        editable=False,
-        default=uuid.uuid4
-    )
-
-    nombre = models.CharField( max_length=150 )
-
-    def __str__(self) -> str:
-        return self.nombre
+from django.db.models import ManyToManyField
 
 # Modelo para clasificar cursos
 class Clasi(models.Model):
@@ -26,6 +13,25 @@ class Clasi(models.Model):
     )
 
     nombre = models.CharField( max_length=50 )
+
+    def __str__(self) -> str:
+        return self.nombre
+
+class Cursos(models.Model):
+    id = models.AutoField(primary_key=True)
+
+    uuid = models.UUIDField(
+        unique=True,
+        editable=False,
+        default=uuid.uuid4
+    )
+
+    nombre = models.CharField( max_length=150 )
+
+    clasi = ManyToManyField(
+        Clasi,
+        related_name="Cursos"
+    )
 
     def __str__(self) -> str:
         return self.nombre
