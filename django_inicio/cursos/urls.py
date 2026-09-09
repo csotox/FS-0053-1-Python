@@ -8,7 +8,8 @@ from cursos.views import (
     iniciar_sesion,
     cerrar_sesion,
     listado_clasi,
-    crear_clasi
+    crear_clasi,
+    asignar_clasi
 )
 
 # [TODO] crear grupos de path
@@ -19,6 +20,7 @@ urlpatterns = [
     path('crear/', crear_cursos),
     path('<uuid:parametro_uuid>/', detalles_cursos),
     path('<uuid:parametro_uuid>/editar/', editar_cursos),
+    path('<uuid:curso_uuid>/asignar-clasi/', asignar_clasi, name="curso_clasi_asignar"),
     path('clasi/', listado_clasi, name="curso_clasi_index"),
     path('clasi/crear/', crear_clasi),
 ]

@@ -74,6 +74,7 @@
                                 class="btn btn-warning"
                                 data-bs-toggle="modal"
                                 data-bs-target="#modalAsignarClasificacion"
+                                data-url="{%  url 'curso_clasi_asignar' curso.uuid  %}"
 
                             >
                                 Clasificar
@@ -83,6 +84,8 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <!-- {{ cursos }} <br> {{ clasi }} -->
 
         {% else %}
 
@@ -114,10 +117,27 @@
                         </button>
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Grabar clasificación</button>
-                    </div>
+                    <form
+                        id="formAsignarClasificacion"
+                        method="post"
+                    >
+                        {% csrf_token %}
+                        <select
+                            name="clasi_uuid"
+                            class="form-select"
+                        >
+                            {% for item in clasi %}
+                                <option value="{{ item.uuid }}">
+                                    {{ item.nombre }}
+                                </option>
+                            {% endfor %}
+                        </select>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Grabar clasificación</button>
+                        </div>
+                    </form>
 
                 </div>
             </div>
@@ -125,4 +145,5 @@
 
     </div>
 </div>
+
 {% endblock %}

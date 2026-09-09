@@ -1,3 +1,5 @@
+from gc import get_objects
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import (
@@ -22,14 +24,16 @@ def get_clasi():
 @permission_required('cursos.view_cursos', raise_exception=True)
 def listado_cursos(request):
     cursos = get_cursos()
+    clasi = Clasi.objects.all()
 
-    print('-- -')
-    print( request.user )
-    print( request.user.has_perm('cursos.add_cursos') )
-    print('-- -')
+    # print('-- -')
+    # print( request.user )
+    # print( request.user.has_perm('cursos.add_cursos') )
+    # print('-- -')
 
     context = {
         'cursos': cursos,
+        'clasi': clasi,
         'prueba': "Hola"
     }
 
@@ -179,6 +183,32 @@ def crear_clasi(request):
         messages.success(request, "Clasificación creada.")
 
         return redirect('/cursos/clasi/')
+
+    return render(
+        request,
+        'cursos/clasi/crear.html'
+    )
+
+@login_required
+def asignar_clasi(request, curso_uuid):
+
+    _cursos = None
+
+    try:
+        _cursos = Cursos.objects.get( uuid=curso_uuid )
+    except Cursos.DoesNotExist:
+        print( f"El curso no existe {curso_uuid}" )
+
+    if request.method == 'POST' and _cursos:
+        clasi_uuid = request.POST.get('clasi_uuid', None)
+
+        _clasi = Clasi.objects.get( uuid=clasi_uuid )
+
+        _cursos.clasi.add(_clasi)
+
+        messages.success(request, "Clasificación asignada.")
+
+        return redirect('/cursos/')
 
     return render(
         request,
