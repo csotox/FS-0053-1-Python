@@ -51,6 +51,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
+                    <th>Clasificación</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -59,6 +60,13 @@
                     <tr>
                         <td>{{ curso.id }}</td>
                         <td>{{ curso.nombre }}</td>
+                        <td>
+                            {% for item_clasi in curso.clasi.all %}
+                                <span class="badge rounded-pill text-bg-secondary">
+                                    {{ item_clasi }}
+                                </span>
+                            {% endfor %}
+                        </td>
                         <td>
                             <a href="/cursos/{{ curso.uuid }}">
                                 Detalle
@@ -71,13 +79,17 @@
                             {% endif %}
                             <button
                                 type="button"
-                                class="btn btn-warning"
+                                class="btn btn-warning position-relative"
                                 data-bs-toggle="modal"
                                 data-bs-target="#modalAsignarClasificacion"
                                 data-url="{%  url 'curso_clasi_asignar' curso.uuid  %}"
 
                             >
                                 Clasificar
+                                <span class="badge text-bg-secondary">{{ curso.clasi.count }}</span>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ curso.clasi.count }}
+                                <span class="visually-hidden">unread messages</span>
                             </button>
                         </td>
                     </tr>
