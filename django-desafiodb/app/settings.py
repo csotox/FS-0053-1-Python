@@ -89,11 +89,11 @@ DATABASES = {
     },
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "adl-test",          # <-- Base de datos del sistema
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "postgres",
-        "PORT": "5432",
+        "NAME": os.getenv('POSTGRE_DB', 'False'),          # <-- Base de datos del sistema
+        "USER": os.getenv('POSTGRE_USER', 'False'),
+        "PASSWORD": os.getenv('POSTGRE_PASSWORD', 'False'),
+        "HOST": os.getenv('POSTGRE_HOST', 'False'),
+        "PORT": os.getenv('POSTGRE_PORT', 'False'),
     }
 }
 
