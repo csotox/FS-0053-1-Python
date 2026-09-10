@@ -1,7 +1,26 @@
 from desafioadl.models import Tarea, SubTarea
 
 def recupera_tareas_y_sub_tareas():
-    ...
+    tareas = Tarea.objects.filter(eliminada=False)
+
+    # Devolvemos una lista
+    todas = []
+    for tarea in tareas:
+        sub_tareas = SubTarea.objects.filter(tarea=tarea, eliminada=False)
+
+        # Crea una tupla por cada tarea con su subtarea
+        # Voy a utilizar esta opción
+        todas.append((tarea, sub_tareas))
+
+        # La alternativa es crear un diccionario
+        # Pero mantengo el tema de la lista de
+        # tuplas
+        todas.append({
+            'tarea': tarea,
+            'sub_tareas': sub_tareas
+        })
+
+    return todas
 
 def crear_nueva_tarea():
     ...
