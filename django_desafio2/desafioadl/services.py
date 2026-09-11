@@ -47,8 +47,13 @@ def elimina_tarea(tarea_id: int = 0):
 
     return recupera_tareas_y_sub_tareas()
 
-def elimina_sub_tarea():
-    ...
+def elimina_sub_tarea(sub_tarea_id: int = 0):
+
+    sub_tarea = SubTarea.objects.get( id = sub_tarea_id, eliminada=False )
+    sub_tarea.eliminada = True
+    sub_tarea.save()
+
+    return recupera_tareas_y_sub_tareas()
 
 def imprimir_en_pantalla():
     ...
