@@ -39,8 +39,13 @@ def crear_sub_tarea(tarea_id: int = 0, descri: str = ''):
 
     return recupera_tareas_y_sub_tareas()
 
-def elimina_tarea():
-    ...
+def elimina_tarea(tarea_id: int = 0):
+
+    tarea = Tarea.objects.get( id = tarea_id, eliminada=False )
+    tarea.eliminada = True
+    tarea.save()
+
+    return recupera_tareas_y_sub_tareas()
 
 def elimina_sub_tarea():
     ...
