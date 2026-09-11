@@ -15,15 +15,19 @@ def recupera_tareas_y_sub_tareas():
         # La alternativa es crear un diccionario
         # Pero mantengo el tema de la lista de
         # tuplas
-        todas.append({
-            'tarea': tarea,
-            'sub_tareas': sub_tareas
-        })
+        # todas.append({
+        #     'tarea': tarea,
+        #     'sub_tareas': sub_tareas
+        # })
 
     return todas
 
-def crear_nueva_tarea():
-    ...
+def crear_nueva_tarea(descri: str = ''):
+    tarea = Tarea.objects.create(
+        descripcion=descri
+    )
+
+    return recupera_tareas_y_sub_tareas()
 
 def crear_sub_tarea():
     ...
